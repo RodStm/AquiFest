@@ -7,8 +7,7 @@
         <title>@yield('title')</title>
 
         <!-- Fonte do Google -->
-        <!-- <link rel = "preconnect" href = "https://fonts.googleapis.com">
-        <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin> --> 
+        <link rel = "preconnect" href = "https://fonts.gstatic.com" crossorigin>  
         <link href = "https: //fonts.googleapis.com/css2? family = Quicksand "rel =" stylesheet ">
 
         <!-- CSS Bootstrap -->
@@ -32,12 +31,29 @@
                         <li class="nav-item">
                             <a href="/events/create" class="nav-link">Criar Festival</a>
                         </li>
+                        @auth
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Cadastrar</a>
+                            <a href="/dashboard" class="nav-link">Meus Festivais</a>
                         </li>
                         <li class="nav-item">
-                            <a href="/" class="nav-link">Entrar</a>
+                            <form action="/logout" method="POST">
+                                @csrf
+                                <a href="/logout" 
+                                    class="nav-link" 
+                                    onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                                        Sair</a>
+                            </form>
                         </li>
+                        @endauth
+                        @guest
+                        <li class="nav-item">
+                            <a href="/login" class="nav-link">Cadastrar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/register" class="nav-link">Entrar</a>
+                        </li>
+                        @endguest
                     </ul>
                 </div>
             </nav>
@@ -50,12 +66,13 @@
                     @endif    
                     @yield('content')
                 </div>    
-            </div>      
-            
+            </div>              
         </main>
+    <body>    
+    
         <footer>
             <p>Aqui Fest &copy; 2022</p>
         </footer>
-        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></ script > 
-    </body>
+        <script src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    </body>         
 </html>
