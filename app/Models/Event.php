@@ -24,6 +24,10 @@ class Event extends Model
     public function users(){
         return $this->belongsToMany('App\Models\User');
     }
+
+    protected $fillable = [
+        'title', 'city',
+    ];
 }
 
-  
+
