@@ -74,26 +74,30 @@
         }
     </style>
 
-    <script type="text/javascript">
-        $('#city').autocomplete({
-            minLength: 1,
+    <script type="text/javascript"> //Inclusão do tipo de linguagem dentro do script
+        $('#city').autocomplete({   //Solicitação de preenchimento automático
+            minLength: 1,           //Número mínimo de caracteres que um usuário pode inserir em um arquivo
             autoFocus: true,
             delay: 300,
             appendTo: '#create-event',
-            source: function(request, response) {
-                $.ajax({
-                    url: `/api/city/${request.term}`,
-                    dataType: 'json',
-                    type: 'get',
-                    success: function(data) {
-                        const {
+            /* Função (callback) com os parâmetros de request (informação que o autopreenchimento solicitou)
+            e response (Monstra o resultado do autopreencimento) */
+            source: function(request, response) {    
+                $.ajax({                                //Chamada AJAX - faz requisições ao servidor sem carregar a página
+                    url: `/api/city/${request.term}`,   //Endereço que vai ser enviada a requisição
+                    dataType: 'json',                   //Formato para receber a requisição
+                    type: 'get',                        //Solicita os dados
+                    success: function(data) {           //Sucesso na Requisição //Função data é uma consulta numa tabela de dados
+                        const {                         //Constante cidade
                             cities
                         } = data ?? {}
-                        if (cities?.length > 0) {
-                            response($.map(cities, function(city, key) {
+                        if (cities?.length > 0) {       //Condição para o tamanho d cidade
+                            //Função Map, mapea o array resultado da função callback
+                            // e retorna o array de acordo com os parâmetros da função
+                            response($.map(cities, function(city, key) {  
                                 return {
-                                    label: city.name,
-                                    value: city.name
+                                    label: city.name,   //Retorna os valores do atributo
+                                    value: city.name    //Retorna os valor do item armazenado
                                 };
                             }));
                         }

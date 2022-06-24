@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="/css/styles.css">
         <script src="/js/scripts.js"></script>
 
-        <!-- Busca de cidade -->
+        <!-- Busca de cidade Importação da Bibliotecas -->
         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" /> 
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
         <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
